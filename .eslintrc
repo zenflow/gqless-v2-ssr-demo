@@ -1,0 +1,4 @@
+{
+  "extends": ["zenflow"],
+  "rules": { /* custom rule configs here */ }
+}

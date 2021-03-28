@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "gqless-ssr-demo",
+  "name": "gqless-v2-ssr-demo",
   "version": "1.0.0",
   "scripts": {
     "dev": "next",

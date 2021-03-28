@@ -1,16 +1,9 @@
-import { GetStaticProps, NextPage } from "next";
-import { PropsWithServerCache } from "@gqless/react";
-import { prepareReactRender, useHydrateCache, useQuery } from "../gqless";
+import { NextPage } from "next";
+import { withGqless, useQuery } from "../gqless";
 
-type PageProps = PropsWithServerCache<{}>;
+type PageProps = {};
 
-export const getStaticProps: GetStaticProps<PageProps> = async (_ctx) => {
-  const { cacheSnapshot } = await prepareReactRender(<Page />);
-  return { props: { cacheSnapshot } };
-};
-
-const Page: NextPage<PageProps> = ({ cacheSnapshot }) => {
-  useHydrateCache({ cacheSnapshot });
+const Page: NextPage<PageProps> = () => {
   return (
     <>
       <h2>Films</h2>
@@ -19,7 +12,7 @@ const Page: NextPage<PageProps> = ({ cacheSnapshot }) => {
   );
 };
 
-export default Page;
+export default withGqless(Page);
 
 const PostsList: React.FC = () => {
   const { allFilms } = useQuery();
